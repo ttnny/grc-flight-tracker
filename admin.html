@@ -1,0 +1,118 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Tony
+ * Date: 11/5/2018
+ * Time: 11:25 AM
+ */
+
+require 'datatables.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Students - Flight Tracker Database</title>
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <!-- Custom fonts for this template -->
+        <link href="addons/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+        <!-- Plugin CSS -->
+        <link href="addons/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/cb.css" rel="stylesheet">
+        <link href="css/creative.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    </head>
+    <body id="page-top">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="summary.php">Flight Tracker</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="registration.php">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="admin.html">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="faq.php">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="cb-background-admin">
+            <div class="container">
+                <h3 class="text-white text-center font-weight-bold mb-3">Student Database</h3>
+                <div class="bg-light px-3 py-3">
+                    <table id="student_flight" class="display table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="text-light bg-dark">Firstname</th>
+                            <th class="text-light bg-dark">Lastname</th>
+                            <th class="text-light bg-dark">Email</th>
+                            <th class="text-light bg-dark">School</th>
+                            <th class="text-light bg-dark">Total Time</th>
+                            <th class="text-light bg-dark">Currently Working on</th>
+                            <th class="text-light bg-dark">Recent Milestone</th>
+                            <th class="text-light bg-dark">Next Milestone</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="my-2 float-right">
+                    <button type="button" class="btn btn-primary">Email</button>
+                    <button type="button" class="btn btn-warning">Print</button>
+                    <button type="button" class="btn btn-success">Export to CSV/Excel</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="addons/bootstrap/js/bootstrap.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="addons/jquery-easing/jquery.easing.min.js"></script>
+        <script src="addons/scrollreveal/scrollreveal.min.js"></script>
+        <script src="addons/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- Custom scripts -->
+        <script src="js/creative.min.js"></script>
+
+        <!-- DataTables -->
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#student_flight').DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": "datatables.php"
+                });
+            });
+        </script>
+    </body>
+</html>
